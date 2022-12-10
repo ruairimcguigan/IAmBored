@@ -1,0 +1,106 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'dagger.hilt.android.plugin'
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion AppConfig.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion AppConfig.minSdkVersion
+        targetSdkVersion AppConfig.compileSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.kotlinCompilerExtensionVersion
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildTypes {
+
+        release {
+        }
+
+        debug {
+        }
+    }
+}
+
+dependencies {
+    implementation(Deps.coreKtx)
+
+    // presentation
+    implementation(Deps.composeUi)
+    implementation(Deps.composeMaterial)
+    implementation(Deps.composeUiTooling)
+    implementation(Deps.composeRuntime)
+    implementation(Deps.viewmodelComposeLivedata)
+    implementation(Deps.activityCompose)
+    implementation(Deps.viewmodelCompose)
+    implementation(Deps.viewmodelComposeLivedata)
+    implementation(Deps.viewmodelComposeRuntime)
+    implementation(Deps.viewmodelComposeViewmodel)
+    debugImplementation(Deps.composeuiTooling)
+
+    // navigation
+    implementation(Deps.navigationCompose)
+    implementation(Deps.hiltNavigationCompose)
+
+    //api
+    implementation(Deps.retrofit)
+    implementation(Deps.moshiRetrofit)
+
+    // db
+    implementation(Deps.roomRuntime)
+    implementation(Deps.roomKtx)
+    kapt(Deps.roomCompiler)
+
+    //di
+    implementation(Deps.hiltAndroid)
+    kapt(Deps.hiltAndroidCompiler)
+
+    // test
+    testImplementation(Deps.jUnit)
+    testImplementation(Deps.jUnit)
+    testImplementation(Deps.coroutinesTest)
+    testImplementation(Deps.architectureTest)
+    testImplementation(Deps.mockitoKotlin)
+    testImplementation(Deps.mockWebServer)
+
+    // instrumentation
+    androidTestImplementation(Deps.jUnitUi)
+    androidTestImplementation(Deps.espressoCore)
+    androidTestImplementation(Deps.compiseJUnit)
+    androidTestImplementation(Deps.mockitoKotlin)
+    androidTestImplementation(Deps.mockitoAndroid)
+    androidTestImplementation(Deps.architectureTest)
+    androidTestImplementation(Deps.mockWebServer)
+    androidTestImplementation(Deps.hiltAndroidTest)
+    kaptAndroidTest(Deps.hiltAndroidCompiler)
+
+    // debug test
+    debugImplementation(Deps.composeuiTooling)
+    debugImplementation(Deps.composeuiManifest)
+}

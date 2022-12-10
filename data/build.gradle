@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$rootProject.projectDir/config/buildsystem/common_build.gradle"
+
+android {
+    compileSdk AppConfig.compileSdkVersion
+
+    defaultConfig {
+        minSdk AppConfig.minSdkVersion
+        targetSdk AppConfig.targetSdkVersion
+
+        testInstrumentationRunner AppConfig.testInstrumentationRunner
+        consumerProguardFiles AppConfig.consumerProguardFiles
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_URL", "\"https://www.boredapi.com/\""
+        }
+
+        release {
+            buildConfigField "String", "API_URL", "\"https://www.boredapi.com/\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+    }
+}
+
+dependencies {
+    implementation project(Modules.domain)
+}

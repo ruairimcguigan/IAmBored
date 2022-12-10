@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+}
+
+apply from: "$rootProject.projectDir/config/buildsystem/common_build.gradle"
+
+android {
+    compileSdk AppConfig.compileSdkVersion
+
+    defaultConfig {
+        applicationId AppConfig.applicationId
+        minSdk AppConfig.minSdkVersion
+        targetSdk AppConfig.targetSdkVersion
+        versionCode AppConfig.versionCode
+        versionName versionName
+
+        testInstrumentationRunner AppConfig.testInstrumentationRunner
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation project(Modules.domain)
+    implementation project(Modules.data)
+    implementation(Deps.icons)
+    testImplementation(Deps.jUnit)
+    testImplementation(Deps.coroutinesTest)
+    testImplementation(Deps.architectureTest)
+    testImplementation(Deps.mockitoKotlin)
+    testImplementation(Deps.mockWebServer)
+}

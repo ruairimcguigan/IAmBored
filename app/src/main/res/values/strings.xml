@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">I am Bored</string>
+
+    <string name="label_easy">Easy</string>
+    <string name="label_moderate">Moderate</string>
+    <string name="label_hard">Hard</string>
+
+    <string name="label_free">Free</string>
+    <string name="label_cheap">Cheap</string>
+    <string name="label_pricey">Pricey</string>
+    <string name="label_expensive">Expensive</string>
+
+    <string name="message_empty_idea_list">You have no saved ideas! Please favourite some</string>
+
+    <string name="cd_refresh_idea">Refresh Idea</string>
+    <string name="cd_save_idea">Save Idea</string>
+    <string name="cd_delete_idea">Delete Idea</string>
+</resources>
