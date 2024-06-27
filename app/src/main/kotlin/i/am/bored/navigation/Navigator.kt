@@ -12,7 +12,7 @@ sealed class Navigator(
     companion object {
         fun fromString(route: String): Navigator {
             return when (route) {
-                Ideas.path -> Ideas
+                Movies.path -> Movies
                 Favourites.path -> Favourites
                 else -> Home
             }
@@ -20,6 +20,7 @@ sealed class Navigator(
     }
 
     object Home : Navigator("home")
+    object Movies : Navigator("movies")
     object Ideas : Navigator("ideas", Icons.Filled.Refresh)
     object Favourites : Navigator("favourites", Icons.Filled.Star)
 

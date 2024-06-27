@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+//apply plugin: 'org.jetbrains.kotlin.plugin.parcelize'
+
 apply from: "$rootProject.projectDir/config/buildsystem/common_build.gradle"
 
 android {
@@ -40,4 +42,5 @@ android {
 
 dependencies {
     implementation project(Modules.domain)
+    implementation(Deps.room)
 }

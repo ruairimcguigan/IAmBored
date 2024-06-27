@@ -1,4 +1,5 @@
 object Versions {
+    const val kotlin: String = "1.6.21"
     const val androidCoreVersion: String = "1.7.0"
     const val composeVersion: String = "1.2.0-rc02"
     const val composeRuntimeVersion: String = "1.2.0-alpha08"

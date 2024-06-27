@@ -8,7 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import i.am.bored.db.AppDb
-import i.am.bored.db.IdeaDao
+import i.am.bored.db.MoviesDao
 import javax.inject.Singleton
 
 @Module
@@ -26,5 +26,5 @@ object TestDbModule {
 
     @Provides
     @Singleton
-    fun provideIdeaDao(appDatabase: AppDb): IdeaDao = appDatabase.ideaDao()
+    fun provideIdeaDao(appDatabase: AppDb): MoviesDao = appDatabase.moviesDao()
 }

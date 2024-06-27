@@ -1,5 +1,6 @@
 
 object Deps {
+    const val kotlinParcelize = "org.jetbrains.kotlin.plugin.parcelize:${Versions.kotlin}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.androidCoreVersion}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.composeVersion}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.composeVersion}"
@@ -14,7 +15,7 @@ object Deps {
     const val viewmodelComposeViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val moshiRetrofit = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
-    const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val room = "androidx.room:room-runtime:${Versions.roomVersion}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val icons = "br.com.devsrsouza.compose.icons.android:${Versions.iconsVersion}"

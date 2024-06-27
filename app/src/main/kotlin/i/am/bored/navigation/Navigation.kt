@@ -9,6 +9,7 @@ import androidx.navigation.compose.navigation
 import i.am.bored.ui.favourite.FavouritesScreen
 import i.am.bored.ui.newidea.NewIdeaScreen
 import i.am.bored.navigation.Navigator
+import i.am.bored.ui.movies.MoviesScreen
 
 @Composable
 fun Navigation(
@@ -21,11 +22,11 @@ fun Navigation(
         startDestination = Navigator.Home.path
     ) {
         navigation(
-            startDestination = Navigator.Ideas.path,
+            startDestination = Navigator.Movies.path,
             route = Navigator.Home.path
         ) {
-            composable(Navigator.Ideas.path) {
-                NewIdeaScreen(modifier = modifier)
+            composable(Navigator.Movies.path) {
+//                MoviesScreen(modifier = modifier)
             }
             composable(Navigator.Favourites.path) {
                 FavouritesScreen(modifier = modifier)

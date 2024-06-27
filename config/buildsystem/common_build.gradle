@@ -72,7 +72,7 @@ dependencies {
     implementation(Deps.moshiRetrofit)
 
     // db
-    implementation(Deps.roomRuntime)
+    implementation(Deps.room)
     implementation(Deps.roomKtx)
     kapt(Deps.roomCompiler)
 

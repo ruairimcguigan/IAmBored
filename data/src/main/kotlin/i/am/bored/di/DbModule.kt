@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import i.am.bored.db.AppDb
-import i.am.bored.db.IdeaDao
+import i.am.bored.db.MoviesDao
 import javax.inject.Singleton
 
 @Module
@@ -26,7 +26,7 @@ object DbModule {
 
     @Provides
     @Singleton
-    fun provideActivityDao(appDb: AppDb): IdeaDao {
-        return appDb.ideaDao()
+    fun provideActivityDao(appDb: AppDb): MoviesDao {
+        return appDb.moviesDao()
     }
 }
