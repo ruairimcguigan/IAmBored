@@ -13,7 +13,7 @@ object Versions {
     const val junitVersion = "4.13.2"
     const val espressoVersion = "3.4.0"
     const val jUnitVersion = "1.1.3"
-    const val kotlinCompilerExtensionVersion = "1.1.1"
+    const val kotlinCompilerExtensionVersion = "1.2.0-rc02"
     const val coroutinesTestVersion = "1.6.1"
     const val archTestingVersion = "2.1.0"
     const val mockitoKotlinVersion = "4.0.0"
