@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import i.am.bored.annotation.BaseUrl
-import i.am.bored.api.IdeaApiClient
+import i.am.bored.api.MovieService
 import i.am.bored.api.IdeaTypeAdapter
 import i.am.bored.data.BuildConfig
 import okhttp3.Cache
@@ -60,7 +60,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiClient(retrofit: Retrofit): IdeaApiClient {
-        return retrofit.create(IdeaApiClient::class.java)
+    fun provideApiClient(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
     }
 }

@@ -1,19 +1,15 @@
 package i.am.bored.ui.newidea.integration
 
-import i.am.bored.api.IdeaApiClient
-import i.am.bored.datasource.IdeaLocalDataSourceImpl
-import i.am.bored.datasource.IdeaRemoteDataSourceImpl
+import i.am.bored.api.MovieService
+import i.am.bored.datasource.LocalDataSourceImpl
+import i.am.bored.datasource.RemoteDataSourceImpl
 import i.am.bored.db.IdeaDao
 import i.am.bored.mapper.DataDomainMapper.mapDomainToData
-import i.am.bored.repository.IdeasRepositoryImpl
+import i.am.bored.repository.MoviesRepositoryImpl
 import i.am.bored.ui.newidea.NewIdeaUiState
 import i.am.bored.ui.newidea.NewIdeasViewModel
 import i.am.bored.ui.newidea.fakes.models.firstIdea
 import i.am.bored.ui.newidea.rules.CoroutineRule
-import interactors.DeleteIdeaInteractorImpl
-import interactors.GetRandomIdeaInteractorImpl
-import interactors.IsIdeaSavedInteractorImpl
-import interactors.SaveIdeaInteractorImpl
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
 import org.junit.Assert
@@ -31,15 +27,15 @@ class NewIdeaViewModelIntegrationTest {
     @get:Rule
     val coroutineRule = CoroutineRule(testDispatcher)
 
-    private val mockApiClient: IdeaApiClient = mock()
+    private val mockApiClient: MovieService = mock()
     private val mockIdeaDao: IdeaDao = mock()
 
-    private val remoteDataSource = IdeaRemoteDataSourceImpl(mockApiClient)
-    private val localDataSource = IdeaLocalDataSourceImpl(mockIdeaDao)
+    private val remoteDataSource = RemoteDataSourceImpl(mockApiClient)
+    private val localDataSource = LocalDataSourceImpl(mockIdeaDao)
 
     private lateinit var classUnderTest: NewIdeasViewModel
 
-    private val ideasRepository = IdeasRepositoryImpl(
+    private val ideasRepository = MoviesRepositoryImpl(
         appScope = testScope,
         ioDispatcher = testDispatcher,
         remoteDataSource = remoteDataSource,

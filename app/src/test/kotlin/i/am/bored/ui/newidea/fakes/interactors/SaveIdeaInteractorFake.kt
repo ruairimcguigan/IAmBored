@@ -1,6 +1,5 @@
 package i.am.bored.ui.newidea.fakes.interactors
 
-import interactors.SaveIdeaInteractor
 import model.IdeaDomain
 
 class SaveIdeaInteractorFake : SaveIdeaInteractor {

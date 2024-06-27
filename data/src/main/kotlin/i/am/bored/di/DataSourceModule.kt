@@ -4,12 +4,12 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import i.am.bored.datasource.IdeaLocalDataSourceImpl
-import i.am.bored.datasource.IdeaRemoteDataSourceImpl
-import i.am.bored.repository.IdeasRepositoryImpl
-import repository.IdeaLocalDataSource
-import repository.IdeaRemoteDataSource
-import repository.IdeasRepository
+import i.am.bored.datasource.LocalDataSourceImpl
+import i.am.bored.datasource.RemoteDataSourceImpl
+import i.am.bored.repository.MoviesRepositoryImpl
+import repository.LocalDataSource
+import repository.RemoteDataSource
+import repository.MoviesRepository
 
 @Suppress("unused")
 @Module
@@ -17,12 +17,12 @@ import repository.IdeasRepository
 abstract class DataSourceModule {
 
     @Binds
-    abstract fun bindActivityRepository(impl: IdeasRepositoryImpl): IdeasRepository
+    abstract fun bindActivityRepository(impl: MoviesRepositoryImpl): MoviesRepository
 
     @Binds
-    abstract fun bindActivityRemoteDataSource(impl: IdeaRemoteDataSourceImpl): IdeaRemoteDataSource
+    abstract fun bindActivityRemoteDataSource(impl: RemoteDataSourceImpl): RemoteDataSource
 
     @Binds
-    abstract fun bindActivityLocalDataSource(impl: IdeaLocalDataSourceImpl): IdeaLocalDataSource
+    abstract fun bindActivityLocalDataSource(impl: LocalDataSourceImpl): LocalDataSource
 
 }

@@ -7,8 +7,6 @@ import i.am.bored.ui.favourite.FavouriteIdeasViewModel
 import i.am.bored.ui.newidea.fakes.models.firstIdea
 import i.am.bored.ui.newidea.fakes.models.secondIdea
 import i.am.bored.ui.newidea.rules.CoroutineRule
-import interactors.DeleteIdeaInteractor
-import interactors.GetFavouriteIdeasInteractor
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

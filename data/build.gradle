@@ -7,13 +7,13 @@ apply from: "$rootProject.projectDir/config/buildsystem/common_build.gradle"
 
 android {
     compileSdk AppConfig.compileSdkVersion
+    namespace 'i.am.bored.data'
 
     defaultConfig {
         minSdk AppConfig.minSdkVersion
         targetSdk AppConfig.targetSdkVersion
 
         testInstrumentationRunner AppConfig.testInstrumentationRunner
-        consumerProguardFiles AppConfig.consumerProguardFiles
     }
 
     buildTypes {

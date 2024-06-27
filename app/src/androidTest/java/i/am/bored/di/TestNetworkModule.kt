@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import i.am.bored.annotation.BaseUrl
-import i.am.bored.api.IdeaApiClient
+import i.am.bored.api.MovieService
 import i.am.bored.api.IdeaTypeAdapter
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
@@ -35,8 +35,8 @@ object TestNetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiClient(retrofit: Retrofit): IdeaApiClient =
-        retrofit.create(IdeaApiClient::class.java)
+    fun provideApiClient(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
 
     @Provides
     @Singleton

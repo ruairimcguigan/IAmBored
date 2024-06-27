@@ -1,28 +1,21 @@
 package di
 
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import interactors.*
+import interactors.movies.GetTopRatedMoviesInteractor
+import interactors.movies.getTopRatedMovies
+import repository.MoviesRepository
 
-@Suppress("unused")
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class InteractorModule {
+object InteractorModule {
 
-    @Binds
-    abstract fun bindGetRandomIdeaInteractor(impl: GetRandomIdeaInteractorImpl): GetRandomIdeaInteractor
-
-    @Binds
-    abstract fun bindSaveIdeaInteractor(impl: SaveIdeaInteractorImpl): SaveIdeaInteractor
-
-    @Binds
-    abstract fun bindDeleteIdeaInteractor(impl: DeleteIdeaInteractorImpl): DeleteIdeaInteractor
-
-    @Binds
-    abstract fun bindIsIdeaSavedInteractor(impl: IsIdeaSavedInteractorImpl): IsIdeaSavedInteractor
-
-    @Binds
-    abstract fun bindGetFavouriteIdeasInteractor(impl: GetFavouriteIdeasInteractorImpl): GetFavouriteIdeasInteractor
+    @Provides
+    fun provideGetTopRatedMoviesInteractor(repository: MoviesRepository): GetTopRatedMoviesInteractor {
+        return GetTopRatedMoviesInteractor {
+            getTopRatedMovies(repository)
+        }
+    }
 }

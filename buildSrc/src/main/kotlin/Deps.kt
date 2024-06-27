@@ -33,4 +33,6 @@ object Deps {
     const val mockitoAndroid = "org.mockito:mockito-android:${Versions.mockitoAndroidVersion}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okHttpVersion}"
     const val composeuiManifest = "androidx.compose.ui:ui-test-manifest:${Versions.composeVersion}"
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    const val picassoTransform = "jp.wasabeef:picasso-transformations:${Versions.picassoTransform}"
 }

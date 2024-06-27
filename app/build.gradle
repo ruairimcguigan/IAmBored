@@ -21,30 +21,33 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
         freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion "1.2.0-rc02"
     }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    namespace 'i.am.bored'
 }
 
 dependencies {
     implementation project(Modules.domain)
     implementation project(Modules.data)
     implementation(Deps.icons)
+    implementation(Deps.picasso)
+    implementation(Deps.picassoTransform)
     testImplementation(Deps.jUnit)
     testImplementation(Deps.coroutinesTest)
     testImplementation(Deps.architectureTest)

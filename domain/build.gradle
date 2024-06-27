@@ -7,11 +7,11 @@ apply from: "$rootProject.projectDir/config/buildsystem/common_build.gradle"
 
 android {
     compileSdk AppConfig.compileSdkVersion
+    namespace 'i.am.bored'
 
     defaultConfig {
         minSdk AppConfig.minSdkVersion
         targetSdk AppConfig.targetSdkVersion
-        consumerProguardFiles AppConfig.consumerProguardFiles
     }
 
     buildTypes {

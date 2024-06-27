@@ -38,13 +38,7 @@ fun NewIdeaScreen(
         val uiState = viewModel.uiState.collectAsState().value
         val uriHandler = LocalUriHandler.current
 
-        Image(
-            painter = painterResource(id = R.drawable.idea),
-            contentDescription = null,
-            modifier = Modifier
-                .size(grid_40)
-                .padding(grid_8),
-        )
+
         when (uiState) {
             is NewIdeaUiState.Loading -> LoadingCard(modifier = Modifier.fillMaxWidth())
             is NewIdeaUiState.Success -> {
@@ -53,7 +47,7 @@ fun NewIdeaScreen(
                     idea = uiState.idea,
                     isFavourite = uiState.isFavourite,
                     onFavouriteClick = {
-                        viewModel.setIsFavourite(uiState.idea, it)
+//                        viewModel.setIsFavourite(uiState.idea, it)
                     },
                     onLinkClick = {
                         uriHandler.openUri(uiState.idea.link)
@@ -68,15 +62,10 @@ fun NewIdeaScreen(
 
         FloatingActionButton(
             modifier = Modifier.size(grid_21),
-            onClick = { viewModel.loadNewIdea() },
+            onClick = {  },
             backgroundColor = MaterialTheme.colors.surface
         ) {
-            Icon(
-                imageVector = EvaIcons.Outline.Bulb,
-                modifier = Modifier.size(grid_21).padding(all = grid_5),
-                contentDescription = stringResource(id = R.string.cd_refresh_idea),
-                tint = Purple500
-            )
+
         }
     }
 }

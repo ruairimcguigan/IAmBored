@@ -5,7 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import i.am.bored.data.testmodels.androidFirstIdea
-import i.am.bored.datasource.IdeaLocalDataSourceImpl
+import i.am.bored.datasource.LocalDataSourceImpl
 import i.am.bored.db.AppDb
 import i.am.bored.db.IdeaDao
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -41,7 +41,7 @@ class IdeasLocalDataSourceImplTest {
     @Test
     fun canSaveActivityToTheDbAndReadIt() = runTest {
         // given
-        val activityLocalDataSource = IdeaLocalDataSourceImpl(ideasDao)
+        val activityLocalDataSource = LocalDataSourceImpl(ideasDao)
 
         // when
         activityLocalDataSource.saveIdea(androidFirstIdea)
@@ -53,7 +53,7 @@ class IdeasLocalDataSourceImplTest {
     @Test
     fun canDeleteActivityFromTheDb() = runTest {
         // given
-        val ideasLocalDataSource = IdeaLocalDataSourceImpl(ideasDao)
+        val ideasLocalDataSource = LocalDataSourceImpl(ideasDao)
         ideasLocalDataSource.saveIdea(androidFirstIdea)
 
         // when

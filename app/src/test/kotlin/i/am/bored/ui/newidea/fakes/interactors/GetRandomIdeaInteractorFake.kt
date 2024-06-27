@@ -1,9 +1,8 @@
 package i.am.bored.ui.newidea.fakes.interactors
 
 import i.am.bored.ui.newidea.fakes.models.firstIdea
-import interactors.GetRandomIdeaInteractor
 import model.IdeaDomain
-import model.Result
+import model.Response
 import java.lang.RuntimeException
 
 class GetRandomIdeaInteractorFake(
@@ -12,8 +11,8 @@ class GetRandomIdeaInteractorFake(
 
     var idea: IdeaDomain? = null
 
-    override suspend fun invoke(): Result<IdeaDomain> {
-        return if (isSuccessful) Result.Success(idea ?: firstIdea)
-        else Result.Error(RuntimeException("merde"))
+    override suspend fun invoke(): Response<IdeaDomain> {
+        return if (isSuccessful) Response.Success(idea ?: firstIdea)
+        else Response.Error(RuntimeException("merde"))
     }
 }

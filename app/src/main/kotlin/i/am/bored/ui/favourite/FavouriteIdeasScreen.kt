@@ -38,7 +38,7 @@ fun FavouritesScreen(
                     modifier = modifier,
                     ideaList = ideas,
                     onDeleteClick = {
-                        viewModel.deleteIdea(it)
+//                        viewModel.deleteIdea(it)
                         ideas.remove(it)
                         if (ideas.isEmpty()) isSavedIdeaEmpty = true
                     }
@@ -80,10 +80,10 @@ fun NoItemsInfo(
             .padding(horizontal = 16.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text = stringResource(id = R.string.message_empty_idea_list),
-            textAlign = TextAlign.Center,
-            fontSize = sp_5,
-        )
+//        Text(
+//            text = stringResource(id = i.am.bored.R.string.message_empty_idea_list),
+//            textAlign = TextAlign.Center,
+//            fontSize = sp_5,
+//        )
     }
 }

@@ -2,11 +2,11 @@ package i.am.bored.datasource
 
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
-import i.am.bored.api.IdeaApiClient
+import i.am.bored.api.MovieService
 import i.am.bored.api.IdeaTypeAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import model.Result
+import model.Response
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -19,10 +19,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @ExperimentalCoroutinesApi
-class IdeaRemoteDataSourceImplTest {
+class RemoteDataSourceImplTest {
 
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var apiClient: IdeaApiClient
+    private lateinit var apiClient: MovieService
 
     private val client = OkHttpClient.Builder().build()
 
@@ -37,7 +37,7 @@ class IdeaRemoteDataSourceImplTest {
             .client(client)
             .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
             .build()
-            .create(IdeaApiClient::class.java)
+            .create(MovieService::class.java)
     }
 
     @After
@@ -50,15 +50,15 @@ class IdeaRemoteDataSourceImplTest {
         // given
         val response = MockResponse().setBody(successfulResponse).setResponseCode(200)
         mockWebServer.enqueue(response)
-        val activityRemoteDataSource = IdeaRemoteDataSourceImpl(apiClient)
+        val activityRemoteDataSource = RemoteDataSourceImpl(apiClient)
         val expectedActivity = responseIdea
 
         // when
-        val result = activityRemoteDataSource.getIdea()
+        val result = activityRemoteDataSource.getTopRatedMovies()
 
         // then
-        assert(result is Result.Success)
-        assertEquals((result as Result.Success).data, expectedActivity)
+        assert(result is Response.Success)
+        assertEquals((result as Response.Success).data, expectedActivity)
     }
 
     @Test
@@ -66,14 +66,14 @@ class IdeaRemoteDataSourceImplTest {
         // given
         val response = MockResponse().setBody(errorResponse).setResponseCode(200)
         mockWebServer.enqueue(response)
-        val activityRemoteDataSource = IdeaRemoteDataSourceImpl(apiClient)
+        val activityRemoteDataSource = RemoteDataSourceImpl(apiClient)
 
         // when
-        val result = activityRemoteDataSource.getIdea()
+        val result = activityRemoteDataSource.getTopRatedMovies()
 
         // then
-        assert(result is Result.Error)
-        assert((result as Result.Error).error is JsonDataException)
+        assert(result is Response.Error)
+        assert((result as Response.Error).error is JsonDataException)
     }
 
     @Test
@@ -81,13 +81,13 @@ class IdeaRemoteDataSourceImplTest {
         // given
         val response = MockResponse().setBody(errorResponse).setResponseCode(400)
         mockWebServer.enqueue(response)
-        val activityRemoteDataSource = IdeaRemoteDataSourceImpl(apiClient)
+        val activityRemoteDataSource = RemoteDataSourceImpl(apiClient)
 
         // when
-        val result = activityRemoteDataSource.getIdea()
+        val result = activityRemoteDataSource.getTopRatedMovies()
 
         // then
-        assert(result is Result.Error)
-        assert((result as Result.Error).error is HttpException)
+        assert(result is Response.Error)
+        assert((result as Response.Error).error is HttpException)
     }
 }

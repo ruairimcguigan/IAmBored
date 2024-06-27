@@ -1,9 +1,9 @@
 package i.am.bored.ui.newidea.fakes.repository
 
 import model.IdeaDomain
-import repository.IdeaLocalDataSource
+import repository.LocalDataSource
 
-class IdeaLocalDataSourceFake : IdeaLocalDataSource {
+class LocalDataSourceFake : LocalDataSource {
 
     override suspend fun saveIdea(idea: IdeaDomain) {
         // save
