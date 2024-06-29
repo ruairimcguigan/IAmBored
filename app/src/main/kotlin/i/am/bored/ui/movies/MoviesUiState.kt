@@ -14,10 +14,8 @@ data class MoviesUiState(
 ) : Parcelable {
 
     sealed class PartialState {
-//        data object Loading : PartialState() // for simplicity: initial loading & refreshing
-
-//        data class Fetched(val list: List<RocketDisplayable>) : PartialState()
-//
-//        data class Error(val throwable: Throwable) : PartialState()
+        data object Loading : PartialState()
+        data class Fetched(val list: List<TopMovie>) : PartialState()
+        data class Error(val throwable: Throwable) : PartialState()
     }
 }

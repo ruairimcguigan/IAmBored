@@ -15,4 +15,5 @@
     <string name="cd_refresh_idea">Refresh Idea</string>
     <string name="cd_save_idea">Save Idea</string>
     <string name="cd_delete_idea">Delete Idea</string>
+    <string name="movies_error_refreshing">Error refreshing movies</string>
 </resources>
